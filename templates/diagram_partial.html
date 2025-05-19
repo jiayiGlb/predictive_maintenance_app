@@ -1,0 +1,7 @@
+{% if plot_url %}
+<div class="row">
+    <div class="plot-container" style="height: 400px;"> <!-- Example height -->
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Sensor Data Plot">
+    </div>
+</div>
+{% endif %}

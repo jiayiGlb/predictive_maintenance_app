@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data Visualization</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Sensor Data Visualization</h1>
+
+    <div class="row">
+        <!-- Diagram and Report Column -->
+        <div class="col-md-6">
+            <div class="diagram mt-4">
+                <h6>Diagram</h6>
+                <div id="diagramContainer">
+                    <!-- Diagram content goes here -->
+                </div>
+            </div>
+
+            <div class="report mt-4">
+                <h6>Report</h6>
+                <div id="reportContainer">
+                    <!-- Report content goes here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Parameters and Thresholds Column -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Input Parameters</h5>
+                </div>
+                <div class="card-body">
+                    <form id="sensorForm">
+                        <div class="row">
+                            <!-- Device Name -->
+                            <div class="col-md-6 form-group">
+                                <label for="device_name">Device Name:</label>
+                                <select id="device_name" name="device_name" class="form-control" required>
+                                    <option value="vms033" selected>vms033</option>
+                                </select>
+                            </div>
+
+                            <!-- Start Date -->
+                            <div class="col-md-6 form-group">
+                                <label for="start_date">Start Date:</label>
+                                <input type="date" id="start_date" name="start_date" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Interval Selector -->
+                            <div class="col-md-6 form-group">
+                                <label for="interval">Interval:</label>
+                                <select id="interval" name="interval" class="form-control" required>
+                                    <option value="1_day">1 Day</option>
+                                    <option value="5_days">5 Days</option>
+                                    <option value="1_month">1 Month</option>
+                                </select>
+                            </div>
+
+                            <!-- Sensor Selector -->
+                            <div class="col-md-6 form-group">
+                                <label for="sensor">Select Sensor:</label>
+                                <select id="sensor" name="sensor" class="form-control" required>
+                                    <option value="EHC_IncomingVoltage">EHC Incoming Voltage</option>
+                                    <option value="EHC_IncomingCurrent">EHC Incoming Current</option>
+                                    <option value="EHC_ConsumedPower">EHC Consumed Power</option>
+                                    <option value="EHC_Temp">EHC Temperature</option>
+                                    <option value="EHC_Humidity">EHC Humidity</option>
+                                    <option value="VMS_Photosensor1">VMS Photosensor 1</option>
+                                    <option value="VMS_Temp1">VMS Temperature 1</option>
+                                    <option value="VMS_Voltage1">VMS Voltage 1</option>
+                                    <option value="VMS_Photosensor2">VMS Photosensor 2</option>
+                                    <option value="VMS_Temp2">VMS Temperature 2</option>
+                                    <option value="VMS_Voltage2">VMS Voltage 2</option>
+                                    <option value="VMS_Photosensor3">VMS Photosensor 3</option>
+                                    <option value="VMS_Temp3">VMS Temperature 3</option>
+                                    <option value="VMS_Voltage3">VMS Voltage 3</option>
+                                    <option value="VMS_Current">VMS Current</option>
+                                    <option value="CPU">CPU Usage</option>
+                                    <option value="Memory">Memory Usage</option>
+                                    <option value="DiskSpace">Disk Space</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="button" id="showDiagramBtn" class="btn btn-primary">Show Diagram</button>
+                            <button type="button" id="generateReportBtn" class="btn btn-success">Generate Report</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5>Thresholds</h5>
+                </div>
+                <div class="card-body">
+                    <form id="thresholdForm">
+                        <div class="row">
+                            <!-- High Thresholds -->
+                            <div class="col-md-6">
+                                <label for="high_threshold_1">High Threshold 1:</label>
+                                <input type="number" id="high_threshold_1" name="high_threshold_1" class="form-control" value="100">
+                                <label for="high_threshold_2">High Threshold 2:</label>
+                                <input type="number" id="high_threshold_2" name="high_threshold_2" class="form-control" value="200">
+                                <label for="high_threshold_3">High Threshold 3:</label>
+                                <input type="number" id="high_threshold_3" name="high_threshold_3" class="form-control" value="300">
+                            </div>
+
+                            <!-- Low Thresholds -->
+                            <div class="col-md-6">
+                                <label for="low_threshold_1">Low Threshold 1:</label>
+                                <input type="number" id="low_threshold_1" name="low_threshold_1" class="form-control" value="10">
+                                <label for="low_threshold_2">Low Threshold 2:</label>
+                                <input type="number" id="low_threshold_2" name="low_threshold_2" class="form-control" value="20">
+                                <label for="low_threshold_3">Low Threshold 3:</label>
+                                <input type="number" id="low_threshold_3" name="low_threshold_3" class="form-control" value="30">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" id="submitThresholdsBtn" class="btn btn-primary">Submit Thresholds</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Store all sensor thresholds in a JavaScript object by converting Flask object to JSON
+    var sensorThresholds = JSON.parse('{{ sensor_thresholds | tojson | safe }}');
+
+    $(document).ready(function() {
+        // Function to update the threshold fields based on the selected sensor
+        function updateThresholds(sensor) {
+            var thresholds = sensorThresholds[sensor];
+            if (thresholds) {
+                $('#high_threshold_1').val(thresholds.high_threshold);
+                $('#low_threshold_1').val(thresholds.low_threshold);
+            } else {
+                $('#high_threshold_1').val('');
+                $('#low_threshold_1').val('');
+            }
+        }
+
+        // Event listener for sensor selection
+        $(document).on('change', '#sensor', function() {
+            var sensor = $(this).val();
+            $.ajax({
+                url: '/get_thresholds',
+                method: 'POST',
+                data: { sensor: sensor },
+                success: function(response) {
+                    $('#high_threshold_1').val(response.high_threshold);
+                    $('#low_threshold_1').val(response.low_threshold);
+                }
+            });
+        });
+
+        // Event listener for 'Show Diagram' button
+        $('#showDiagramBtn').click(function() {
+            $.ajax({
+                url: '/show_diagram',
+                method: 'POST',
+                data: $('#sensorForm').serialize(),
+                success: function(response) {
+                    $('#diagramContainer').html(response); // Replace content
+                    $('#diagramContainer').css({
+                        width: '100%',
+                        height: '400px'
+                    });
+                }
+            });
+        });
+
+        // Event listener for 'Generate Report' button
+        $('#generateReportBtn').click(function() {
+            $.ajax({
+                url: '/generate_report',
+                method: 'POST',
+                data: $('#sensorForm').serialize(),
+                success: function(response) {
+                    $('#reportContainer').html(response); // Replace content
+                }
+            });
+        });
+
+        // Event listener for 'Submit Thresholds' button
+        $('#submitThresholdsBtn').click(function() {
+            var thresholdsData = {
+                high_threshold_1: $('#high_threshold_1').val(),
+                high_threshold_2: $('#high_threshold_2').val(),
+                high_threshold_3: $('#high_threshold_3').val(),
+                low_threshold_1: $('#low_threshold_1').val(),
+                low_threshold_2: $('#low_threshold_2').val(),
+                low_threshold_3: $('#low_threshold_3').val()
+            };
+
+            $.ajax({
+                url: '/submit_thresholds',
+                method: 'POST',
+                data: thresholdsData,
+                success: function(response) {
+                    alert('Thresholds submitted successfully!');
+                }
+            });
+        });
+
+        // Initialize the form with default thresholds
+        var defaultSensor = $('#sensor').val();
+        updateThresholds(defaultSensor);
+    });
+</script>
+</body>
+</html>

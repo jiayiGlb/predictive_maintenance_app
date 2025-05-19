@@ -1,0 +1,11 @@
+archive/
+data1/
+data2/
+data/
+flask_session/
+__pycache__/
+config/__pycache__/
+utils/__pycache__/
+venv/
+
+desctiption.txt

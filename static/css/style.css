@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#diagramContainer {
+    width: 100%; /* Takes full width of its parent */
+    height: 0; /* Set height to 0 for aspect ratio */
+    padding-bottom: 56.25%; /* Aspect ratio for 16:9 */
+    position: relative; /* Allows positioning of absolute elements */
+}
+
+#diagramContainer > canvas, /* Assuming you're using a canvas for the diagram */
+#diagramContainer > svg { /* Or an SVG for the diagram */
+    position: absolute; /* Allows the diagram to be placed within the container */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+}
+
+.row {
+    display: flex; /* Use flexbox for the layout */
+}
+
+.col-md-6 {
+    flex: 1; /* Make both columns equal in width */
+}
+
+.plot-container {
+    width: 100%; /* Make the plot container take the full width of its parent */
+    height: 100%; /* Make the plot container take the full height of its parent */
+    display: flex; /* Use flexbox for centering if needed */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+}
+
+.plot-container img {
+    max-width: 100%; /* Ensure the image scales down to fit the container */
+    max-height: 100%; /* Ensure the image scales down to fit the container */
+}
