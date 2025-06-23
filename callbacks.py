@@ -163,18 +163,18 @@ def register_callbacks(app):
 
                 if i == len(high_count) - 1:
                     alert_message = (
-                        f"The {sensor} sensor has reached a Fault status (High) {count} times during periods: "
-                        f"{', '.join(periods_message)}. Replace the {component}."
+                        f"The {sensor} sensor has reached a Fault status (High). "
+                        f"Replace the {component}."
                     )
                 elif i == len(high_count) - 2:
                     alert_message = (
-                        f"The {sensor} sensor has reached a Major status (High) {count} times during periods: "
-                        f"{', '.join(periods_message)}. On-site inspection required for {component}."
+                        f"The {sensor} sensor has reached a Major status (High). "
+                        f"On-site inspection required for {component}."
                     )
                 else:
                     alert_message = (
-                        f"The {sensor} sensor has reached a Minor status (High) {count} times during periods: "
-                        f"{', '.join(periods_message)}. Monitor the {component}."
+                        f"The {sensor} sensor has reached a Minor status (High). "
+                        f"Monitor the {component}."
                     )
                 break
 
@@ -189,18 +189,18 @@ def register_callbacks(app):
 
                 if i == len(low_count) - 1:
                     alert_message = (
-                        f"The {sensor} sensor has reached a Fault status (Low) {count} times during periods: "
-                        f"{', '.join(periods_message)}. Replace the {component}."
+                        f"The {sensor} sensor has reached a Fault status (Low). "
+                        f"Replace the {component}."
                     )
                 elif i == len(low_count) - 2:
                     alert_message = (
-                        f"The {sensor} sensor has reached a Major status (Low) {count} times during periods: "
-                        f"{', '.join(periods_message)}. On-site inspection required for {component}."
+                        f"The {sensor} sensor has reached a Major status (Low). "
+                        f"On-site inspection required for {component}."
                     )
                 else:
                     alert_message = (
-                        f"The {sensor} sensor has reached a Minor status (Low) {count} times during periods: "
-                        f"{', '.join(periods_message)}. Monitor the {component}."
+                        f"The {sensor} sensor has reached a Minor status (Low). "
+                        f"Monitor the {component}."
                     )
                 break
 

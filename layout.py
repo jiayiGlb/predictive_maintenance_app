@@ -52,7 +52,7 @@ def get_layout():
                                 dbc.Label("Start Date:"),
                                 dcc.DatePickerSingle(
                                     id='start_date',
-                                    date=datetime(2023, 11, 1).strftime('%Y-%m-%d'),
+                                    date=datetime(2025, 3, 1).strftime('%Y-%m-%d'),
                                     className="mb-3"
                                 )
                             ])
@@ -101,7 +101,18 @@ def get_device_options():
     data_path = './data'
     if not os.path.exists(data_path):
         return []
-    devices = sorted(
-        [name for name in os.listdir(data_path) if os.path.isdir(os.path.join(data_path, name))]
-    )
+
+    device_set = set()
+
+    for month_name in os.listdir(data_path):
+        month_path = os.path.join(data_path, month_name)
+        if not os.path.isdir(month_path):
+            continue
+
+        for device_name in os.listdir(month_path):
+            device_path = os.path.join(month_path, device_name)
+            if os.path.isdir(device_path):
+                device_set.add(device_name)
+
+    devices = sorted(device_set)
     return [{'label': device, 'value': device} for device in devices]
