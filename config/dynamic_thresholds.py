@@ -30,9 +30,6 @@ def generate_threshold_card(sensor_name, thresholds):
                             className="mb-3"
                         )
                     ]) for i in range(max(len(low_thresholds), 3))
-                ], width=6),
-                dbc.Col([
-                    dbc.Button("Update Thresholds", id='updateThresholdsBtn', color="primary", className="me-2")
                 ], width=6)
             ])
         ])
